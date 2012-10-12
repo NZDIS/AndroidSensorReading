@@ -26,12 +26,12 @@ public class JavaGyroscope extends TestSensor implements SensorEventListener {
 
     public void startup() {
         sensorManager.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_FASTEST);
-        System.out.println(this.getClass().getSimpleName() + " registered Listener");
+        //System.out.println(this.getClass().getSimpleName() + " registered Listener");
     }
 
     public void shutdown() {
         sensorManager.unregisterListener(this);
-        System.out.println(this.getClass().getSimpleName() + " unregistered Listener");
+        //System.out.println(this.getClass().getSimpleName() + " unregistered Listener");
     }
 
 }

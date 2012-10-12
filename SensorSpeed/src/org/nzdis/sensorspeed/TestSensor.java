@@ -4,18 +4,16 @@ public abstract class TestSensor extends Thread {
 	
 	private int runTimeSeconds = 0;
 	private int counter = 0;
-	private long timerStart = 0;
-	private long timerStop = 0;
-	private boolean isRunning = false;
+	protected long timerStart = 0;
+	protected long timerStop = 0;
+	protected boolean isRunning = false;
 
 	public abstract void startup();
 	public abstract void shutdown();
 	
 	@Override
 	public void run() {
-		System.out.println("calling startup");
 		startup();
-		System.out.println("startup finished");
         try {
         	System.out.println(this.getClass().getSimpleName() + " test starting - " + runTimeSeconds + "s");
 			Thread.sleep(200);
@@ -27,6 +25,7 @@ public abstract class TestSensor extends Thread {
 			System.out.println(" - count: " + getCounter());
 			System.out.println(" - duration(millis): " + getDuration());
 			System.out.println(" - samples per second: " + ((1000 * getCounter()) / getDuration()));
+			System.out.println(" ");
    		} catch (InterruptedException e) {
 			e.printStackTrace();
    		}

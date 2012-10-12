@@ -2,8 +2,8 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := Controller
-LOCAL_SRC_FILES := Controller.cpp Accelerometer.cpp 
+LOCAL_MODULE    := Sensors
+LOCAL_SRC_FILES := Common.cpp
 
 LOCAL_LDLIBS := -lm -lGLESv2 -ldl -llog -landroid
 

@@ -54,4 +54,40 @@
         android:layout_below="@+id/buttonJavaGyroscope"
         android:text="C Gyroscope" />
 
+    <Button
+        android:id="@+id/buttonJavaMagneticField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/buttonCGyroscope"
+        android:text="Java Magnetic Field" />
+
+    <Button
+        android:id="@+id/buttonCMagneticField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/buttonJavaMagneticField"
+        android:text="C Magnetic Field" />
+
+    <Button
+        android:id="@+id/buttonJavaThreeSensors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/buttonCMagneticField"
+        android:text="Java Three Sensors" />
+
+    <Button
+        android:id="@+id/buttonCThreeSensors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/buttonJavaThreeSensors"
+        android:text="C Three Sensors" />
+    
 </RelativeLayout>

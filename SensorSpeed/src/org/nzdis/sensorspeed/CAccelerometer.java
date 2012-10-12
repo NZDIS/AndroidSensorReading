@@ -1,41 +1,42 @@
 package org.nzdis.sensorspeed;
 
-import android.content.Context;
-
 public class CAccelerometer extends TestSensor {
 
-    public CAccelerometer(Context context) {
-    }
+    public native void accelerometerStartup(CAccelerometer handler);
+    public static native void accelerometerShutdown();
 
+    class AccelerometerThread extends Thread {
+		CAccelerometer ja;
+		public AccelerometerThread(CAccelerometer ja) {
+			this.ja = ja;
+		}
+		public void run() {
+			accelerometerStartup(ja);
+		}
+		public void end() {
+			accelerometerShutdown();
+		}
+	}
+	
+	AccelerometerThread accelThread;
+	
+	int i = 0;
+	
     // called from the C object
 	public void onSensorChanged() {
 		sensorChanged();
 	}
 
-    public native void accelerometerStartup(CAccelerometer handler);
-    public static native void accelerometerShutdown();
-
 	@Override
 	public void startup() {
-    	/*new Thread(new Runnable() {
-    		public void run() {
-    			accelerometerStartup(this);
-    		}
-    	}).start();*/
-		// TODO
-		System.out.println("CAstart1");
-		accelerometerStartup(this);
-		System.out.println("CAstart2");
+		accelThread = new AccelerometerThread(this);
+		accelThread.start();
 	}
 
 	@Override
 	public void shutdown() {
-		accelerometerShutdown();
-	}
-
-	static {
-		System.out.println("loading code");
-		System.loadLibrary("Controller");
+		accelThread.end();
+		accelThread = null;
 	}
 	
 }

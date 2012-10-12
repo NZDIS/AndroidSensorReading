@@ -6,14 +6,14 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-public class JavaAccelerometer extends TestSensor implements SensorEventListener {
+public class JavaMagneticField extends TestSensor implements SensorEventListener {
 
     private SensorManager sensorManager;
-    private Sensor accelerometer;
+    private Sensor magneticField;
 
-    public JavaAccelerometer(Context context) {
+    public JavaMagneticField(Context context) {
         sensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        magneticField = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     }
 
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -25,7 +25,7 @@ public class JavaAccelerometer extends TestSensor implements SensorEventListener
 	}
 
     public void startup() {
-        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
+        sensorManager.registerListener(this, magneticField, SensorManager.SENSOR_DELAY_FASTEST);
         //System.out.println(this.getClass().getSimpleName() + " registered Listener");
     }
 

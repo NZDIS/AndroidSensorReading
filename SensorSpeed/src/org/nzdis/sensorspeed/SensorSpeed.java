@@ -24,7 +24,7 @@ public class SensorSpeed extends Activity {
     	final Button buttonCAccelerometer = (Button) findViewById(R.id.buttonCAccelerometer);
     	buttonCAccelerometer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                runTest(new CAccelerometer(v.getContext()));
+                runTest(new CAccelerometer());
             }
         });
 
@@ -38,7 +38,35 @@ public class SensorSpeed extends Activity {
     	final Button buttonCGyroscope = (Button) findViewById(R.id.buttonCGyroscope);
     	buttonCGyroscope.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //runTest(new CGyroscope(v.getContext()));
+                runTest(new CGyroscope());
+            }
+        });
+
+    	final Button buttonJavaMagneticField = (Button) findViewById(R.id.buttonJavaMagneticField);
+    	buttonJavaMagneticField.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                runTest(new JavaMagneticField(v.getContext()));
+            }
+        });
+
+    	final Button buttonCMagneticField = (Button) findViewById(R.id.buttonCMagneticField);
+    	buttonCMagneticField.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                runTest(new CMagneticField());
+            }
+        });
+
+    	final Button buttonJavaThreeSensors = (Button) findViewById(R.id.buttonJavaThreeSensors);
+    	buttonJavaThreeSensors.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                runTest(new JavaThreeSensors(v.getContext()));
+            }
+        });
+
+    	final Button buttonCThreeSensors = (Button) findViewById(R.id.buttonCThreeSensors);
+    	buttonCThreeSensors.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                runTest(new CThreeSensors());
             }
         });
 
@@ -56,4 +84,9 @@ public class SensorSpeed extends Activity {
         return true;
     }
 
+	static {
+		System.out.println("SensorSpeed - loading C++ library...");
+		System.loadLibrary("Sensors");
+		System.out.println("SensorSpeed - loading C++ library successful");
+	}
 }
